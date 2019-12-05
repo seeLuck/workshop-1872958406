@@ -18,7 +18,7 @@ if GetModConfigData("lanternColor") then
 	modimport("scripts/lanterncolor.lua")
 end
 
-modimport("scripts/trashcan.lua")
+modimport("scripts/settings.lua")
 modimport("scripts/stack.lua")
 modimport("scripts/clean.lua")
 modimport("scripts/autocatch.lua")
@@ -26,7 +26,6 @@ modimport("scripts/thermalstone.lua")
 modimport("scripts/toolsfule.lua")
 modimport("scripts/boatpatch.lua")
 modimport("scripts/equipmentswitcher.lua")
-modimport("scripts/settings.lua")
 modimport("scripts/wallmath.lua")
 modimport("scripts/dontdrop.lua")
 modimport("scripts/eyeturret.lua")

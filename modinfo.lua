@@ -37,16 +37,6 @@ configuration_options =
         default = false,
     },
     {
-        name = "refiller",
-        label = "Refiller",
-        options =
-        {
-            {description = "OFF", data = false, hover = "OFF"},
-            {description = "ON", data = true, hover = "ON"},
-        },
-        default = false,
-    },
-    {
         name = "beenice",
         label = "BeeNice",
         options =
