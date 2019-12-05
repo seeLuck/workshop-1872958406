@@ -105,25 +105,25 @@ if IsServer then
             bugnet      = { max = 3, tool = true, reclean = 1 },    -- 捕虫网
             fishingrod  = { max = 3, tool = true, reclean = 1 },    -- 鱼竿
             spear       = { max = 3, tool = true, reclean = 1 },    -- 矛
-            spiderhat   = { max = 0 },    -- 蜘蛛帽
+            spiderhat   = { max = 0, tool = true, reclean = 1 },    -- 蜘蛛帽
             heatrock    = { max = 20, tool = true, reclean = 1 },   -- 热能石
             trap        = { max = 20, tool = true, reclean = 1 },   -- 动物陷阱
             birdtrap    = { max = 10, tool = true, reclean = 1 },   -- 鸟陷阱
-            compass     = { max = 0 },    -- 指南針
+            compass     = { max = 1, tool = true, reclean = 1 },    -- 指南針
 
             glommerwings  = { max = 0 },       -- 格罗姆翅膀
 
-            chesspiece_deerclops_sketch     = { max = 2, tool = true, reclean = 1 },    -- 四季 boss 棋子图
-            chesspiece_bearger_sketch       = { max = 2, tool = true, reclean = 1 },
-            chesspiece_moosegoose_sketch    = { max = 2, tool = true, reclean = 1 },
-            chesspiece_dragonfly_sketch     = { max = 2, tool = true, reclean = 1 },
+            chesspiece_deerclops_sketch     = { max = 1, tool = true, reclean = 1 },    -- 四季 boss 棋子图
+            chesspiece_bearger_sketch       = { max = 1, tool = true, reclean = 1 },
+            chesspiece_moosegoose_sketch    = { max = 1, tool = true, reclean = 1 },
+            chesspiece_dragonfly_sketch     = { max = 1, tool = true, reclean = 1 },
 
-            winter_ornament_boss_bearger    = { max = 2, stack = 1, reclean = 3 },    -- 四季 boss 和蛤蟆、蜂后的挂饰
-            winter_ornament_boss_beequeen   = { max = 2, stack = 1, reclean = 3 },
-            winter_ornament_boss_deerclops  = { max = 2, stack = 1, reclean = 3 },
-            winter_ornament_boss_dragonfly  = { max = 2, stack = 1, reclean = 3 },
-            winter_ornament_boss_moose      = { max = 2, stack = 1, reclean = 3 },
-            winter_ornament_boss_toadstool  = { max = 2, stack = 1, reclean = 3 },
+            winter_ornament_boss_bearger    = { max = 2, stack = 0, reclean = 2 },    -- 四季 boss 和蛤蟆、蜂后的挂饰
+            winter_ornament_boss_beequeen   = { max = 2, stack = 0, reclean = 2 },
+            winter_ornament_boss_deerclops  = { max = 2, stack = 0, reclean = 2 },
+            winter_ornament_boss_dragonfly  = { max = 2, stack = 0, reclean = 2 },
+            winter_ornament_boss_moose      = { max = 2, stack = 0, reclean = 2 },
+            winter_ornament_boss_toadstool  = { max = 2, stack = 0, reclean = 2 },
 
             -- armor_sanity   = { max = 10 },    -- 影甲
             nightsword    = { max = 10 },    -- 影刀

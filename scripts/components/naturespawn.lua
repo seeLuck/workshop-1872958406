@@ -4,10 +4,10 @@ prefabs.wasphive = 20
 prefabs.beehive = 30
 prefabs.houndmound = 20
 prefabs.pighouse = 25
-prefabs.mermhouse = 50
+prefabs.mermhouse = 40
 prefabs.catcoonden = 10
 prefabs.spiderden = 30
-prefabs.tallbirdnest = 30
+prefabs.tallbirdnest = 20
 prefabs.tentacle = 120
 prefabs.beefalo = 30
 prefabs.lightninggoat = 20
@@ -21,7 +21,7 @@ prefabs.green_mushroom = 30
 prefabs.red_mushroom = 10
 prefabs.fireflies = 120
 prefabs.slurtlehole = 30
-prefabs.flower_cave = 500
+prefabs.flower_cave = 450
 prefabs.spiderhole = 40
 prefabs.rabbithouse = 30
 
@@ -32,7 +32,7 @@ tilefns.houndmound = function(tile) return (tile == GROUND.DESERT_DIRT) end
 tilefns.pighouse = function(tile) return (tile == GROUND.DECIDUOUS) end
 tilefns.mermhouse = function(tile) return (tile == GROUND.FOREST or tile == GROUND.MARSH) end
 tilefns.catcoonden = function(tile) return (tile == GROUND.DECIDUOUS) end
-tilefns.spiderden = function(tile) return (tile == GROUND.ROCKY or tile == GROUND.FOREST or tile == GROUND.SINKHOLE) end
+tilefns.spiderden = function(tile) return (tile == GROUND.FOREST or tile == GROUND.SINKHOLE) end
 tilefns.tallbirdnest = function(tile) return (tile == GROUND.ROCKY or tile == GROUND.DESERT_DIRT) end
 tilefns.tentacle = function(tile) return (tile == GROUND.MARSH) end
 tilefns.beefalo = function(tile) return (tile == GROUND.SAVANNA) end
@@ -50,6 +50,9 @@ tilefns.slurtlehole = function(tile) return (tile == GROUND.MUD) end
 tilefns.flower_cave = function(tile) return (tile == GROUND.MUD or tile == GROUND.SINKHOLE) end
 tilefns.spiderhole = function(tile) return (tile == GROUND.UNDERROCK) end
 tilefns.rabbithouse = function(tile) return (tile == GROUND.SINKHOLE) end
+tilefns.chesspiece_bishop_sketch = function(tile) return (tile == GROUND.DECIDUOUS) end
+tilefns.chesspiece_rook_sketch = function(tile) return (tile == GROUND.DECIDUOUS) end
+tilefns.chesspiece_knight_sketch = function(tile) return (tile == GROUND.DECIDUOUS) end
 
 function c_countprefabsonground(prefab)
     local count = 0
@@ -351,12 +354,38 @@ local function rabbithouse_spawner(inst)
     end
 end
 
+local function sketch_spawner(inst)
+    local min_num = 1
+    local count1 = c_countprefabsonground("chesspiece_bishop_sketch")
+    local count2 = c_countprefabsonground("chesspiece_rook_sketch")
+    local count3 = c_countprefabsonground("chesspiece_knight_sketch")
+
+    local numtospawn1 = min_num - count1
+    local numtospawn2 = min_num - count2
+    local numtospawn3 = min_num - count3
+    if numtospawn1 > 0 then
+        for i = 1, numtospawn1, 1 do
+            TrySpawn("chesspiece_bishop_sketch", inst)
+        end
+    end
+    if numtospawn2 > 0 then
+        for i = 1, numtospawn2, 1 do
+            TrySpawn("chesspiece_rook_sketch", inst)
+        end
+    end
+    if numtospawn3 > 0 then
+        for i = 1, numtospawn3, 1 do
+            TrySpawn("chesspiece_knight_sketch", inst)
+        end
+    end
+end
+
 local NatureSpawn = Class(function(self, inst)
     self.inst = inst
 
     inst:ListenForEvent("cycleschanged", function()
-        local count_60days = TheWorld.state.cycles/60
-        if math.floor(count_60days) == count_60days and count_60days ~= 0 then --try spawn prefabs every 50 days
+        local count_50days = TheWorld.state.cycles/50
+        if math.floor(count_50days) == count_50days and count_50days ~= 0 then --try spawn prefabs every 50 days
             if TheWorld:HasTag("forest") then
                 wasphive_spawner(inst)
                 beehive_spawner(inst)
@@ -377,6 +406,7 @@ local NatureSpawn = Class(function(self, inst)
                 green_mushroom_spawner(inst)
                 red_mushroom_spawner(inst)
                 fireflies_spawner(inst)
+                sketch_spawner(inst)
             elseif TheWorld:HasTag("cave") then
                 slurtlehole_spawner(inst)
                 flower_cave_spawner(inst)
@@ -384,7 +414,6 @@ local NatureSpawn = Class(function(self, inst)
                 rabbithouse_spawner(inst)
             end
             spiderden_spawner(inst)
-            TheNet:Announce("世界资源再生中...")
         end
     end)
 end)
