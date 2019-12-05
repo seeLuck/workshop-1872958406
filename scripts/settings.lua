@@ -1,6 +1,14 @@
 -- 草蜥蜴
 TUNING.GRASSGEKKO_MORPH_CHANCE = 0
 
+-- 舔盐器
+if GetModConfigData("salt") then
+	TUNING.SALTLICK_BEEFALO_USES = 0;
+	TUNING.SALTLICK_KOALEFANT_USES = 0;
+	TUNING.SALTLICK_LIGHTNINGGOAT_USES = 0;
+	TUNING.SALTLICK_DEER_USES = 0;
+end
+
 -- 蜘蛛吃肉
 --Make spiders wait longer before trying to eat
 GLOBAL.TUNING.SPIDER_EAT_DELAY = 10		--default is 1.5

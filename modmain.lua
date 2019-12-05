@@ -2,10 +2,6 @@ if GetModConfigData("usercmd") then
 	modimport("scripts/usercmd.lua")
 end
 
-if GetModConfigData("salt") then
-	modimport("scripts/salt.lua")
-end
-
 if GetModConfigData("beenice") then
 	modimport("scripts/beenice.lua")
 end
