@@ -6,10 +6,6 @@ if GetModConfigData("salt") then
 	modimport("scripts/salt.lua")
 end
 
-if GetModConfigData("refiller") then
-	modimport("scripts/refiller.lua")
-end
-
 if GetModConfigData("beenice") then
 	modimport("scripts/beenice.lua")
 end
@@ -33,5 +29,4 @@ modimport("scripts/equipmentswitcher.lua")
 modimport("scripts/settings.lua")
 modimport("scripts/wallmath.lua")
 modimport("scripts/dontdrop.lua")
-modimport("scripts/combinerepair.lua")
 modimport("scripts/eyeturret.lua")
