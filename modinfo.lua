@@ -1,7 +1,7 @@
 name = "Server Improvement"
 description = "自用服务器优化插件，随时可能再改，最好别订阅。\nSelf-use server improvement collections. Updating at any time. No recommend to subscribe it."
 author = "雪绕风飞"
-version = "1.5"
+version = "1.6"
 forumthread = ""
 api_version = 10
 icon_atlas = "modicon.xml"
