@@ -28,7 +28,7 @@ end)
 
 -- 船血上限
 if GetModConfigData("boatHealth") then
-	TUNING.BOAT.HEALTH = 1000
+	TUNING.BOAT.HEALTH = 500
 end
 
 -- 蘑菇帽孢子速度
