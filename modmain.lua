@@ -14,6 +14,10 @@ if GetModConfigData("lanternColor") then
 	modimport("scripts/lanterncolor.lua")
 end
 
+if GetModConfigData("smartIceMachine") then
+	modimport("scripts/smarticemachine.lua")
+end
+
 modimport("scripts/settings.lua")
 modimport("scripts/stack.lua")
 modimport("scripts/clean.lua")
