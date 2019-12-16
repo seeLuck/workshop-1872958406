@@ -34,7 +34,7 @@ if IsServer then
             tentacle            = { max = 150 },
 
             ------------------------  可拾取物品  ------------------------
-            seeds           = { max = 3, stack = 0, reclean = 1 },       -- 种子
+            seeds           = { max = 10, stack = 0, reclean = 1 },       -- 种子
             log             = { max = 5, stack = 5, reclean = 1 },       -- 木头
             livinglog       = { max = 3, stack = 0, reclean = 2 },        -- 活木
             charcoal        = { max = 5, stack = 5, reclean = 2 },        -- 木炭
@@ -79,7 +79,8 @@ if IsServer then
             slurtleslime    = { max = 0 , stack = 0, reclean = 1 },       -- 鼻涕虫粘液
             slurtle_shellpieces = { max = 0 , stack = 0, reclean = 1 },   -- 鼻涕虫壳碎片
 
-            spoiled_food    = { max = 5, stack = 5, reclean = 10 },       -- 腐烂食物
+            spoiled_food    = { max = 0, stack = 3, reclean = 5 },       -- 腐烂食物
+            rottenegg       = { max = 0, stack = 0, reclean = 10 },       -- 坏鸡蛋
             winter_food4    = { max = 2, stack = 1, reclean = 3 },        -- 维多利亚面包
 
             winter_ornament_plain1 = { max = 2, stack = 1, reclean = 3 }, -- 节日小饰品
@@ -102,9 +103,12 @@ if IsServer then
             shovel      = { max = 3, tool = true, reclean = 1 },    -- 铲子
             razor       = { max = 3, tool = true, reclean = 1 },    -- 剃刀
             pitchfork   = { max = 3, tool = true, reclean = 1 },    -- 草叉
-            bugnet      = { max = 3, tool = true, reclean = 1 },    -- 捕虫网
-            fishingrod  = { max = 3, tool = true, reclean = 1 },    -- 鱼竿
+            bugnet      = { max = 5, tool = true, reclean = 1 },    -- 捕虫网
+            fishingrod  = { max = 5, tool = true, reclean = 1 },    -- 鱼竿
             spear       = { max = 3, tool = true, reclean = 1 },    -- 矛
+            spear_wathgrithr     = { max = 5, tool = true, reclean = 1 },    -- 战斗长矛
+            tentaclespike    = { max = 10, tool = true, reclean = 1 },    -- 触手棒
+            umbrella    = { max = 2, tool = true, reclean = 1 },    -- 伞
             spiderhat   = { max = 0, tool = true, reclean = 1 },    -- 蜘蛛帽
             heatrock    = { max = 20, tool = true, reclean = 1 },   -- 热能石
             trap        = { max = 20, tool = true, reclean = 1 },   -- 动物陷阱

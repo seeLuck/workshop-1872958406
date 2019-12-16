@@ -8,7 +8,7 @@ prefabs.mermhouse = 40
 prefabs.catcoonden = 10
 prefabs.spiderden = 30
 prefabs.tallbirdnest = 20
-prefabs.tentacle = 120
+prefabs.tentacle = 100
 prefabs.beefalo = 30
 prefabs.lightninggoat = 20
 prefabs.pigtorch = 30
@@ -24,6 +24,8 @@ prefabs.slurtlehole = 30
 prefabs.flower_cave = 450
 prefabs.spiderhole = 40
 prefabs.rabbithouse = 30
+prefabs.reeds = 30
+prefabs.cactus = 70
 
 local tilefns = {}
 tilefns.wasphive = function(tile) return (tile == GROUND.GRASS) end
@@ -35,8 +37,10 @@ tilefns.catcoonden = function(tile) return (tile == GROUND.DECIDUOUS) end
 tilefns.spiderden = function(tile) return (tile == GROUND.FOREST or tile == GROUND.SINKHOLE) end
 tilefns.tallbirdnest = function(tile) return (tile == GROUND.ROCKY or tile == GROUND.DESERT_DIRT) end
 tilefns.tentacle = function(tile) return (tile == GROUND.MARSH) end
+tilefns.reeds = function(tile) return (tile == GROUND.MARSH) end
 tilefns.beefalo = function(tile) return (tile == GROUND.SAVANNA) end
 tilefns.lightninggoat = function(tile) return (tile == GROUND.DESERT_DIRT) end
+tilefns.cactus = function(tile) return (tile == GROUND.DESERT_DIRT) end
 tilefns.pigtorch = function(tile) return (tile == GROUND.FOREST or tile == GROUND.SAVANNA) end
 tilefns.knight = function(tile) return (tile == GROUND.ROCKY) end
 tilefns.bishop = function(tile) return (tile == GROUND.ROCKY) end
@@ -73,7 +77,7 @@ local function TrySpawn(strfab, inst)
     --local playerInRange = IsAnyPlayerInRange(pt.x, pt.y, pt.z, 50)
     local canspawn = tile ~= GROUND.IMPASSABLE and tile ~= GROUND.INVALID and tile ~= 255
     local tilecheck = tilefns[strfab]
-    if canspawn and tilecheck(tile) and not IsAnyPlayerInRange(pt.x, pt.y, pt.z, 64 * 1.2, nil) then
+    if canspawn and tilecheck(tile) then
         local b = SpawnPrefab(strfab)
         if b ~= nil then
             if b.Physics ~= nil then
@@ -354,6 +358,28 @@ local function rabbithouse_spawner(inst)
     end
 end
 
+local function reeds_spawner(inst)
+    local min_num = prefabs.reeds
+    local count = c_countprefabsonground("reeds")
+    local numtospawn = min_num - count
+    if numtospawn > 0 then
+        for i = 1, numtospawn, 1 do
+            TrySpawn("reeds", inst)
+        end
+    end
+end
+
+local function cactus_spawner(inst)
+    local min_num = prefabs.cactus
+    local count = c_countprefabsonground("cactus")
+    local numtospawn = min_num - count
+    if numtospawn > 0 then
+        for i = 1, numtospawn, 1 do
+            TrySpawn("cactus", inst)
+        end
+    end
+end
+
 local function sketch_spawner(inst)
     local min_num = 1
     local count1 = c_countprefabsonground("chesspiece_bishop_sketch")
@@ -406,6 +432,8 @@ local NatureSpawn = Class(function(self, inst)
                 green_mushroom_spawner(inst)
                 red_mushroom_spawner(inst)
                 fireflies_spawner(inst)
+                reeds_spawner(inst)
+                cactus_spawner(inst)
                 sketch_spawner(inst)
             elseif TheWorld:HasTag("cave") then
                 slurtlehole_spawner(inst)
