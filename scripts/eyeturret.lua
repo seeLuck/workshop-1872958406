@@ -8,9 +8,6 @@ AddPrefabPostInit("eyeturret", function(inst)
 	inst.components.machine.turnonfn = turnon
 	
 	if inst and inst.components and inst.components.lootdropper then
-		inst.components.lootdropper:AddRandomLoot("deerclops_eyeball", 1)
-		inst.components.lootdropper:AddRandomLoot("thulecite", 4)
-		inst.components.lootdropper:AddRandomLoot("minotaurhorn", 1)
-		inst.components.lootdropper.numrandomloot = 6
+		inst.components.lootdropper:SetLoot({"minotaurhorn", "deerclops_eyeball", "thulecite", "thulecite", "thulecite", "thulecite"})
 	end
 end)
