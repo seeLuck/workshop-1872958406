@@ -43,3 +43,17 @@ if GetModConfigData("natureSpawn") then
 		inst:AddComponent("naturespawn")
 	end)
 end
+
+-- 树根消失速度
+TUNING.EVERGREEN_REGROWTH.DEAD_DECAY_TIME = 480 * 3
+TUNING.EVERGREEN_SPARSE_REGROWTH.DEAD_DECAY_TIME = 480 * 3
+TUNING.TWIGGY_TREE_REGROWTH.DEAD_DECAY_TIME = 480 * 3
+TUNING.DECIDUOUS_REGROWTH.DEAD_DECAY_TIME = 480 * 3
+TUNING.MUSHTREE_REGROWTH.DEAD_DECAY_TIME = 480 * 3
+TUNING.MOON_TREE_REGROWTH.DEAD_DECAY_TIME = 480 * 3
+
+-- 洞口蝙蝠
+AddPrefabPostInit("cave_entrance_open", function(inst)
+	inst.components.childspawner:SetRegenPeriod(480)
+	inst.components.childspawner:SetMaxChildren(1)
+end)

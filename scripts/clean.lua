@@ -31,7 +31,8 @@ if IsServer then
             skeleton_player     = { max = 20 },                       -- 玩家尸体
             spiderden           = { max = 60 },                       -- 蜘蛛巢
             burntground         = { max = 20 },                       -- 陨石痕跡
-            tentacle            = { max = 150 },
+            tentacle            = { max = 200 },
+            beefalo             = { max = 80 },
 
             ------------------------  可拾取物品  ------------------------
             seeds           = { max = 10, stack = 0, reclean = 1 },       -- 种子
@@ -157,8 +158,11 @@ if IsServer then
                 repeat
                     -- 不可见物品(在包裹内等)
                     if v.inlimbo then break end
-
                     local thisPrefab = v.prefab
+                    -- 非野生牛
+                    if thisPrefab == 'beefalo' and not (v.components.domesticatable ~= nil and v.components.domesticatable:IsDomesticated()) then
+                        break
+                    end
                     if this_max_prefabs[thisPrefab] ~= nil then
                         if v.reclean == nil then
                             v.reclean = 1
