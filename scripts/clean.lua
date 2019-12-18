@@ -31,8 +31,8 @@ if IsServer then
             skeleton_player     = { max = 20 },                       -- 玩家尸体
             spiderden           = { max = 60 },                       -- 蜘蛛巢
             burntground         = { max = 20 },                       -- 陨石痕跡
-            tentacle            = { max = 200 },
-            beefalo             = { max = 80 },
+            tentacle            = { max = 200 },                      -- 触手
+            beefalo             = { max = 80 },                       -- 牛
 
             ------------------------  可拾取物品  ------------------------
             seeds           = { max = 10, stack = 0, reclean = 1 },       -- 种子
