@@ -64,7 +64,7 @@ if IsServer then
             spidergland     = { max = 5 , stack = 3, reclean = 3 },       -- 蜘蛛腺体
             spidereggsack   = { max = 0 , stack = 0, reclean = 3 },       -- 蜘蛛巢卵
             stinger         = { max = 0 , stack = 0, reclean = 2 },       -- 蜂刺
-            beardhair       = { max = 3 , stack = 3, reclean = 1 },       -- 胡须
+            beardhair       = { max = 2 , stack = 0, reclean = 1 },       -- 胡须
             coontail        = { max = 3 , stack = 2, reclean = 3 },       -- 猫尾巴
             boneshard       = { max = 0 , stack = 0, reclean = 2 },       -- 骨头碎片
             cutreeds        = { max = 0 , stack = 0, reclean = 3 },       -- 芦苇
@@ -122,6 +122,10 @@ if IsServer then
             chesspiece_bearger_sketch       = { max = 1, tool = true, reclean = 1 },
             chesspiece_moosegoose_sketch    = { max = 1, tool = true, reclean = 1 },
             chesspiece_dragonfly_sketch     = { max = 1, tool = true, reclean = 1 },
+            chesspiece_bishop_sketch        = { max = 1, tool = true, reclean = 18 },
+            chesspiece_rook_sketch          = { max = 1, tool = true, reclean = 18 },
+            chesspiece_knight_sketch        = { max = 1, tool = true, reclean = 18 },
+            sketch                          = { max = 0, tool = true, reclean = 18 },
 
             winter_ornament_boss_bearger    = { max = 2, stack = 0, reclean = 2 },    -- 四季 boss 和蛤蟆、蜂后的挂饰
             winter_ornament_boss_beequeen   = { max = 2, stack = 0, reclean = 2 },
