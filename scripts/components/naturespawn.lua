@@ -75,7 +75,7 @@ local function TrySpawn(strfab, inst)
     local pt = Vector3(math.random(-1000, 1000), 0, math.random(-1000, 1000))
     local tile = TheWorld.Map:GetTileAtPoint(pt.x, pt.y, pt.z)
     --local playerInRange = IsAnyPlayerInRange(pt.x, pt.y, pt.z, 50)
-    local canspawn = tile ~= GROUND.IMPASSABLE and tile ~= GROUND.INVALID and tile ~= 255
+    local canspawn = tile ~= GROUND.IMPASSABLE and tile ~= GROUND.INVALID and tile ~= 255 and FindEntity(inst, 50, nil, { "campfire", "structure" }) == nil
     local tilecheck = tilefns[strfab]
     if canspawn and tilecheck(tile) then
         local b = SpawnPrefab(strfab)
