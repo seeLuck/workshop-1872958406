@@ -1,3 +1,5 @@
+local detect_witherable = 1
+
 local NOTAGS = { "FX", "NOCLICK", "DECOR", "INLIMBO", "burnt", "player", "monster" }
 local EMERGENCYTAGS = { "structure", "wall", "tree", "pickable", "witherable", "readyforharvest", "notreadyforharvest" }
 local NONEMERGENCYTAGS = {"witherable", "fire", "smolder"}
@@ -303,6 +305,9 @@ local function OnDetectEmergencyTargets(inst, self)
                 inst:ListenForEvent("onremove", self.emergencyWatched[v].onremove, v)
             end
             if v.components.burnable:IsBurning() or v.components.burnable:IsSmoldering() then
+                firecount = firecount + 1
+            end
+            if detect_witherable == 1 and v.components.witherable ~= nil and v.components.witherable:CanRejuvenate() then
                 firecount = firecount + 1
             end
         end
