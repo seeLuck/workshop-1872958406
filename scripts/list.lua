@@ -10,7 +10,7 @@ Fixed Skinned Lights 1.0
 Thermal Stone full4
 Less Ravenous Creatures 1.1
 No Grass Gekko 1.0
-IceMachine 1.2
+IceMachine-Max 1.0.1
 wx78 1.0
 NoSalt 1.1
 Boatpatch 1.0
