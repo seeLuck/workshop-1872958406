@@ -32,7 +32,7 @@ if GetModConfigData("boatHealth") then
 end
 
 -- 蘑菇帽孢子速度
-TUNING.MUSHROOMHAT_SPORE_TIME = 20
+TUNING.MUSHROOMHAT_SPORE_TIME = 15
 
 -- 世界再生
 if GetModConfigData("natureSpawn") then
