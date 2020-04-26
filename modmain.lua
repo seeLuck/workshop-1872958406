@@ -18,7 +18,8 @@ if GetModConfigData("smartIceMachine") then
 	modimport("scripts/smarticemachine.lua")
 end
 
-if GetModConfigData("farmer") and TUNING.FARMERPREFABS then
+if GetModConfigData("farmer") then
+	TUNING.FARMERPREFABS = true
 	modimport("scripts/farmer.lua")
 end
 
