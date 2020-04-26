@@ -19,7 +19,6 @@ if GetModConfigData("smartIceMachine") then
 end
 
 if GetModConfigData("farmer") then
-	TUNING.FARMERPREFABS = true
 	modimport("scripts/farmer.lua")
 end
 

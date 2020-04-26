@@ -1,3 +1,10 @@
+local function FuckGlobalUsingMetatable()
+    GLOBAL.setmetatable(env, {   __index = function(t, k)
+        return GLOBAL.rawget(GLOBAL, k)
+    end,  })
+end
+FuckGlobalUsingMetatable()
+
 local function FindTarget(inst, radius)
     return FindEntity(
         inst,
