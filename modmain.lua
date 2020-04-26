@@ -19,7 +19,7 @@ if GetModConfigData("smartIceMachine") then
 end
 
 if GetModConfigData("farmer") then
-	modimport("scripts/farmer.lua")
+	modimport("scripts/rancher.lua")
 end
 
 modimport("scripts/settings.lua")
