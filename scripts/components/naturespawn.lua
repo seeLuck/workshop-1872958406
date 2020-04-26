@@ -15,7 +15,8 @@ prefabs.pigtorch = 30
 prefabs.knight = 2
 prefabs.bishop = 2
 prefabs.rook = 1
-prefabs.mandrake = 2
+prefabs.mandrake_planted = 2
+prefabs.livingtree = 2
 prefabs.blue_mushroom = 30
 prefabs.green_mushroom = 30
 prefabs.red_mushroom = 10
@@ -45,7 +46,8 @@ tilefns.pigtorch = function(tile) return (tile == GROUND.FOREST or tile == GROUN
 tilefns.knight = function(tile) return (tile == GROUND.ROCKY) end
 tilefns.bishop = function(tile) return (tile == GROUND.ROCKY) end
 tilefns.rook = function(tile) return (tile == GROUND.ROCKY) end
-tilefns.mandrake = function(tile) return (tile == GROUND.FOREST) end
+tilefns.mandrake_planted = function(tile) return (tile == GROUND.FOREST) end
+tilefns.livingtree = function(tile) return (tile == GROUND.FOREST) end
 tilefns.blue_mushroom = function(tile) return (tile == GROUND.FOREST or tile == GROUND.DECIDUOUS or tile == GROUND.GRASS) end
 tilefns.green_mushroom = function(tile) return (tile == GROUND.FOREST or tile == GROUND.DECIDUOUS or tile == GROUND.GRASS) end
 tilefns.red_mushroom = function(tile) return (tile == GROUND.FOREST or tile == GROUND.DECIDUOUS or tile == GROUND.GRASS) end
@@ -260,13 +262,24 @@ local function rook_spawner(inst)
     end
 end
 
-local function mandrake_spawner(inst)
-    local min_num = prefabs.mandrake
-    local count = c_countprefabsonground("mandrake")
+local function mandrake_planted_spawner(inst)
+    local min_num = prefabs.mandrake_planted
+    local count = c_countprefabsonground("mandrake_planted")
     local numtospawn = min_num - count
     if numtospawn > 0 then
         for i = 1, numtospawn, 1 do
-            TrySpawn("mandrake", inst)
+            TrySpawn("mandrake_planted", inst)
+        end
+    end
+end
+
+local function livingtree_spawner(inst)
+    local min_num = prefabs.livingtree
+    local count = c_countprefabsonground("livingtree")
+    local numtospawn = min_num - count
+    if numtospawn > 0 then
+        for i = 1, numtospawn, 1 do
+            TrySpawn("livingtree", inst)
         end
     end
 end
@@ -428,7 +441,8 @@ local NatureSpawn = Class(function(self, inst)
                 knight_spawner(inst)
                 bishop_spawner(inst)
                 rook_spawner(inst)
-                mandrake_spawner(inst)
+                mandrake_planted_spawner(inst)
+                livingtree_spawner(inst)
                 blue_mushroom_spawner(inst)
                 green_mushroom_spawner(inst)
                 red_mushroom_spawner(inst)
