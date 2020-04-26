@@ -87,16 +87,6 @@ configuration_options =
         default = false,
     },
     {
-        name = "farmer",
-        label = "Farmer",
-        options =
-        {
-            {description = "OFF", data = false, hover = "OFF"},
-            {description = "ON", data = true, hover = "ON"},
-        },
-        default = false,
-    },
-    {
         name = "lanternColor",
         label = "LanternColor",
         options =
