@@ -18,9 +18,16 @@ if GetModConfigData("smartIceMachine") then
 	modimport("scripts/smarticemachine.lua")
 end
 
+if GetModConfigData("worldClean") then
+	modimport("scripts/worldclean.lua")
+end
+
+if GetModConfigData("seasonStart") then
+	modimport("scripts/seasonstart.lua")
+end
+
 modimport("scripts/settings.lua")
 modimport("scripts/stack.lua")
-modimport("scripts/clean.lua")
 modimport("scripts/autocatch.lua")
 modimport("scripts/thermalstone.lua")
 modimport("scripts/toolsfule.lua")
@@ -29,4 +36,3 @@ modimport("scripts/equipmentswitcher.lua")
 modimport("scripts/wallmath.lua")
 modimport("scripts/dontdrop.lua")
 modimport("scripts/eyeturret.lua")
-modimport("scripts/seasonstart.lua")
