@@ -12,7 +12,6 @@ shipwrecked_compatible = false
 dst_compatible = true
 client_only_mod = false
 all_clients_require_mod = false
-server_filter_tags = {"stack", "clean"}
 
 configuration_options =
 {
@@ -102,7 +101,8 @@ configuration_options =
         options =
         {
             {description = "OFF", data = false, hover = "OFF"},
-            {description = "ON", data = true, hover = "ON"},
+            {description = "Normal", data = 1, hover = "Normal"},
+            {description = "Wealthy", data = 2, hover = "Wealthy"},
         },
         default = false,
     },
@@ -119,6 +119,16 @@ configuration_options =
     {
         name = "fridgeFresh",
         label = "FridgeFresh",
+        options =
+        {
+            {description = "OFF", data = false, hover = "OFF"},
+            {description = "ON", data = true, hover = "ON"},
+        },
+        default = false,
+    },
+    {
+        name = "bossFastRespawn",
+        label = "BossFastRespawn",
         options =
         {
             {description = "OFF", data = false, hover = "OFF"},

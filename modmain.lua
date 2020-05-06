@@ -22,7 +22,7 @@ if GetModConfigData("worldClean") then
 	modimport("scripts/worldclean.lua")
 end
 
-if GetModConfigData("seasonStart") then
+if GetModConfigData("seasonStart") ~= false then
 	modimport("scripts/seasonstart.lua")
 end
 

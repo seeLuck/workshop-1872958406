@@ -18,16 +18,27 @@ local OnPlayerSpawn = function(src, player)
         if GLOBAL.TheWorld.state.iswinter or (GLOBAL.TheWorld.state.isautumn and GLOBAL.TheWorld.state.remainingdaysinseason < 3) then
             table.insert(start_items, "heatrock")
             table.insert(start_items, "earmuffshat")
-            for i = 1, 2 do table.insert(start_items, "meatballs") end
         end
 
         --for all season
-        for i = 1, 4 do table.insert(start_items, "goldnugget") end
-        for i = 1, 10 do table.insert(start_items, "flint") end
-        for i = 1, 6 do table.insert(start_items, "rocks") end
-        for i = 1, 4 do table.insert(start_items, "log") end
-        for i = 1, 6 do table.insert(start_items, "cutgrass") end
-        for i = 1, 6 do table.insert(start_items, "twigs") end
+        if GetModConfigData("seasonStart") == 1 then
+            for i = 1, 4 do table.insert(start_items, "goldnugget") end
+            for i = 1, 10 do table.insert(start_items, "flint") end
+            for i = 1, 6 do table.insert(start_items, "rocks") end
+            for i = 1, 4 do table.insert(start_items, "log") end
+            for i = 1, 6 do table.insert(start_items, "cutgrass") end
+            for i = 1, 6 do table.insert(start_items, "twigs") end
+            for i = 1, 2 do table.insert(start_items, "meatballs") end
+        elseif GetModConfigData("seasonStart") == 2 then
+            for i = 1, 10 do table.insert(start_items, "goldnugget") end
+            for i = 1, 20 do table.insert(start_items, "flint") end
+            for i = 1, 30 do table.insert(start_items, "rocks") end
+            for i = 1, 40 do table.insert(start_items, "log") end
+            for i = 1, 40 do table.insert(start_items, "cutgrass") end
+            for i = 1, 40 do table.insert(start_items, "twigs") end
+            for i = 1, 6 do table.insert(start_items, "silk") end
+            for i = 1, 8 do table.insert(start_items, "meatballs") end
+        end    
 
         for k,v in pairs(start_items) do
             local item = GLOBAL.SpawnPrefab(v)
