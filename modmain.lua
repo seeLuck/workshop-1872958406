@@ -26,6 +26,10 @@ if GetModConfigData("seasonStart") ~= false then
 	modimport("scripts/seasonstart.lua")
 end
 
+if GetModConfigData("farmer") then
+	modimport("scripts/farmer.lua")
+end
+
 modimport("scripts/settings.lua")
 modimport("scripts/stack.lua")
 modimport("scripts/autocatch.lua")
