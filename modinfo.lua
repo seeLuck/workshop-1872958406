@@ -81,7 +81,8 @@ configuration_options =
         options =
         {
             {description = "OFF", data = false, hover = "OFF"},
-            {description = "ON", data = true, hover = "ON"},
+            {description = "Less", data = 1, hover = "Less"},
+            {description = "More", data = 2, hover = "More"},
         },
         default = false,
     },
