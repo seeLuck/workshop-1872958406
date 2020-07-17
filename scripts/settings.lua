@@ -35,12 +35,19 @@ end
 TUNING.MUSHROOMHAT_SPORE_TIME = 15
 
 -- 世界再生
-if GetModConfigData("natureSpawn") then
+if GetModConfigData("natureSpawn") == 1 then
 	AddPrefabPostInit("forest", function(inst)
-		inst:AddComponent("naturespawn")
+		inst:AddComponent("naturespawnless")
 	end)
 	AddPrefabPostInit("cave", function(inst)
-		inst:AddComponent("naturespawn")
+		inst:AddComponent("naturespawnless")
+	end)
+elseif GetModConfigData("natureSpawn") == 2 then
+	AddPrefabPostInit("forest", function(inst)
+		inst:AddComponent("naturespawnmore")
+	end)
+	AddPrefabPostInit("cave", function(inst)
+		inst:AddComponent("naturespawnmore")
 	end)
 end
 
