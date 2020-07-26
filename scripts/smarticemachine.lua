@@ -4,7 +4,6 @@ _G.TUNING.EMERGENCY_BURNT_NUMBER = 1
 _G.TUNING.EMERGENCY_BURNING_NUMBER = 1 -- number of fires to maintain warning level one automatically
 _G.TUNING.EMERGENCY_WARNING_TIME = 1   -- minimum length of warning period
 _G.TUNING.EMERGENCY_RESPONSE_TIME = 1 -- BURNT_NUMBER structures must burn within this time period to trigger flingomatic emergency response
-
 _G.TUNING.EMERGENCY_SHUT_OFF_TIME = 5 -- stay on for this length of time
 _G.TUNING.FIRESUPPRESSOR_MAX_FUEL_TIME = 480 * 20
 
@@ -16,6 +15,29 @@ local whitelist_for_ice_flingomatic = {
 	"nightlight",
 	"pigtorch",
 }
+
+--For the mod of Deluxe Campfires 2.11
+local deluxe_camfires_list = {
+	"deluxe_firepit",
+	"deluxe_firepit_fire",
+	"endo_firepit",
+	"endo_firepit_fire",
+	"ice_star",
+	"ice_star_flame",
+	"heat_star",
+	"heat_star_flame",
+}
+
+if GLOBAL.KnownModIndex:IsModEnabled("workshop-444235588") then
+	for k, v in pairs(deluxe_camfires_list) do
+		table.insert(whitelist_for_ice_flingomatic, v)
+	end
+end
+
+--For the mod of Tropical Experience | The Volcano Biome
+if GLOBAL.KnownModIndex:IsModEnabled("workshop-1505270912") then
+	table.insert(whitelist_for_ice_flingomatic, "obsidianfirepit")
+end
 
 for k, v in pairs(whitelist_for_ice_flingomatic) do
 	AddPrefabPostInit(v, function(inst)
@@ -137,6 +159,12 @@ local function OnEndWarning(inst, level)
     end
 end
 
+local function onbuilt(inst)
+    inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/firesupressor_craft")
+    if inst.components.machine ~= nil then
+        inst.components.machine:TurnOff()
+    end
+end
 
 local function ReplaceFireDetector(inst)
 	if	inst.components.machine ~= nil then
@@ -154,8 +182,7 @@ local function ReplaceFireDetector(inst)
 		inst.components.firedetectorplus:SetOnEndWarningFn(OnEndWarning)
 	end
     inst:SetStateGraph("SGfiresuppressorplus")
-    inst.components.machine:TurnOff()
+    inst:ListenForEvent("onbuilt", onbuilt)
 end
 
 AddPrefabPostInit("firesuppressor", ReplaceFireDetector)
---]]

@@ -23,15 +23,19 @@ if IsServer then
             deer            = { max = 15 },    -- 鹿
             slurtle         = { max = 5 },     -- 鼻涕虫
             snurtle         = { max = 5 },     -- 蜗牛
-
             ------------------------  地面物体  ------------------------
-            twiggytree          = { max = 100 },                      -- 树枝树
+            twiggytree          = { max = 0 },                      -- 树枝树
+            twiggy_normal       = { max = 0 },                      -- 树枝树
+            twiggy_tall         = { max = 0 },                      -- 树枝树
+            twiggy_short        = { max = 0 },                      -- 树枝树
+            twiggy_old          = { max = 0 },                      -- 树枝树
+            twiggy_nut_sapling  = { max = 0 },                      -- 树枝树
             marsh_tree          = { max = 50 },                       -- 针刺树
-            rock_petrified_tree = { max = 200 },                      -- 石化树
+            rock_petrified_tree = { max = 20 },                      -- 石化树
             skeleton_player     = { max = 20 },                       -- 玩家尸体
-            spiderden           = { max = 60 },                       -- 蜘蛛巢
-            burntground         = { max = 20 },                       -- 陨石痕跡
-            tentacle            = { max = 200 },                      -- 触手
+            spiderden           = { max = 50 },                       -- 蜘蛛巢
+            burntground         = { max = 10 },                       -- 陨石痕跡
+            tentacle            = { max = 100 },                      -- 触手
             beefalo             = { max = 80 },                       -- 牛
 
             ------------------------  可拾取物品  ------------------------

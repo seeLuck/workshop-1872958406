@@ -1,7 +1,15 @@
+local detect_withered = 1
+local detect_withering = 1
+
 local NOTAGS = { "FX", "NOCLICK", "DECOR", "INLIMBO", "burnt", "player", "monster" }
-local EMERGENCYTAGS = { "structure", "wall", "tree", "pickable", "witherable", "readyforharvest", "notreadyforharvest" }
-local NONEMERGENCYTAGS = {"witherable", "fire", "smolder"}
+local EMERGENCYTAGS = { "structure", "wall", "tree", "pickable", "witherable", "readyforharvest", "notreadyforharvest", "TriggerTrapMode"}
+local NONEMERGENCYTAGS = {"witherable", "fire", "smolder", "TriggerTrapMode"}
 local TURN_ON_DELAY = 13 * FRAMES
+
+-- local move_away = false
+local trapTarget = nil
+local TRAPMODETAG = {"TriggerTrapMode"}
+local trapTriggerDetectRange = 5
 
 local function onemergency(self, emergency)
     if emergency then
@@ -13,6 +21,8 @@ end
 
 local FireDetectorPlus = Class(function(self, inst)
     self.inst = inst
+
+    self.trapModeDetectRange = trapTriggerDetectRange
 
     self.range = TUNING.FIRE_DETECTOR_RANGE
     self.detectPeriod = TUNING.FIRE_DETECTOR_PERIOD
@@ -139,9 +149,10 @@ local function LookForFiresAndFirestarters(inst, self, force)
     end
 	local x, y, z = inst.Transform:GetWorldPosition()
     local ents = TheSim:FindEntities(x, y, z, self.range, nil, NOTAGS, NONEMERGENCYTAGS)
+
 	local target = nil
-	local targetscore = 0
-	for i, v in ipairs(ents) do
+    local targetscore = 0
+    for i, v in ipairs(ents) do
 		if not self.detectedItems[v] then
             local score, force = CheckTargetScore(v)
             if force then
@@ -152,7 +163,12 @@ local function LookForFiresAndFirestarters(inst, self, force)
 				target = v
 			end
 		end
-	end
+    end
+
+    -- if trapTarget == old_v and move_away then
+    --     trapTarget = nil
+    -- end
+
     if target ~= nil then
         RegisterDetectedItem(inst, self, target)
         if self.onfindfire ~= nil then
@@ -179,13 +195,10 @@ end
 local function DetectFireEmergency(inst, self)
     local x, y, z = inst.Transform:GetWorldPosition()
     local ents = TheSim:FindEntities(x, y, z, self.range, nil, NOTAGS, NONEMERGENCYTAGS)
+
     local target = nil
-	local targetscore = 0
-    -- for i, v in ipairs(ents) do
-    --     if not self.detectedItems[v] and v:IsValid() then
-    --         return v
-    --     end
-    -- end
+    local targetscore = 0
+    
     for i, v in ipairs(ents) do
 		if not self.detectedItems[v] and v:IsValid() then
             local score, force = CheckTargetScore(v)
@@ -240,6 +253,16 @@ local function EmergencyResponse(inst, self, target)
             while #self.emergencyBurnt > 0 and self.emergencyBurnt[1] <= t do
                 table.remove(self.emergencyBurnt, 1)
             end
+        end
+        
+        local x, y, z = inst.Transform:GetWorldPosition()
+        local ents = TheSim:FindEntities(x, y, z, self.trapModeDetectRange, nil, NOTAGS, NONEMERGENCYTAGS)
+
+        local old_v = trapTarget
+        local move_away = true
+        
+        if trapTarget == old_v and move_away then
+            trapTarget = nil
         end
 
         if self.warningStartTime ~= nil and
@@ -302,8 +325,22 @@ local function OnDetectEmergencyTargets(inst, self)
                 inst:ListenForEvent("onburnt", self.emergencyWatched[v].onburnt, v)
                 inst:ListenForEvent("onremove", self.emergencyWatched[v].onremove, v)
             end
-            if v.components.burnable:IsBurning() or v.components.burnable:IsSmoldering()then
+            if v.components.burnable:IsBurning() or v.components.burnable:IsSmoldering() then
                 firecount = firecount + 1
+            end
+            if detect_withered == 1 or detect_withering == 1 then
+                if v.components.witherable then
+                    -- if v.components.witherable:CanRejuvenate() then
+                    --     firecount = firecount + 1
+                    -- end
+                    if detect_withering == 1 then 
+                        if v.components.witherable:CanWither() and not v.components.witherable:IsProtected() and TheWorld.state.temperature > TUNING.MIN_PLANT_WITHER_TEMP and not TheWorld.state.israining then
+                        firecount = firecount + 1
+                        end
+                    elseif v.components.witherable:CanRejuvenate() then
+                        firecount = firecount + 1
+                    end
+                end
             end
         end
     end
