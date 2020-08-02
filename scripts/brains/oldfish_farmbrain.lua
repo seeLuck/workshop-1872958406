@@ -594,8 +594,7 @@ local function mineRock(inst)
         return
     end
     local target = FindEntity(inst, SEE_BUSH_DIST, hasRock, nil, excludes)
-    if target then
-
+    if target and target.prefab ~= "moonspiderden" then
         if target.components.growable and target.components.growable.stage ~= 3 then
             return
         end
