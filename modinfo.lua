@@ -146,5 +146,15 @@ configuration_options =
             {description = "ON", data = true, hover = "ON"},
         },
         default = false,
+    },
+    {
+        name = "buildingCloser",
+        label = "BuildingCloser",
+        options =
+        {
+            {description = "OFF", data = false, hover = "OFF"},
+            {description = "ON", data = true, hover = "ON"},
+        },
+        default = false,
     }
 }

@@ -66,6 +66,7 @@ if GetModConfigData("fridgeFresh") then
 	TUNING.PERISH_MUSHROOM_LIGHT_MULT = .05
 end
 
+-- BOSS复活速度
 if GetModConfigData("bossFastRespawn") then
 	TUNING.TOADSTOOL_RESPAWN_TIME = 480 * 5
 	TUNING.BEEQUEEN_RESPAWN_TIME = 480 * 5
@@ -73,4 +74,35 @@ if GetModConfigData("bossFastRespawn") then
 	TUNING.CRABKING_RESPAWN_TIME = 480 * 5
 	TUNING.ANTLION_RAGE_TIME_INITIAL = 999 * 480
 	TUNING.ANTLION_RAGE_TIME_MAX = 999 * 480
+end
+
+if GetModConfigData("buildingCloser") then
+	for _,v in pairs(GLOBAL.AllRecipes) do
+		v.min_spacing = 1
+	end
+	AddPrefabPostInit("dug_berrybush", function(inst)
+		if inst.components.deployable then
+			inst.components.deployable:SetDeploySpacing(GLOBAL.DEPLOYSPACING.MEDIUM)
+		end
+	end)
+	AddPrefabPostInit("dug_berrybush2", function(inst)
+		if inst.components.deployable then
+			inst.components.deployable:SetDeploySpacing(GLOBAL.DEPLOYSPACING.MEDIUM)
+		end
+	end)
+	AddPrefabPostInit("dug_berrybush_juicy", function(inst)
+		if inst.components.deployable then
+			inst.components.deployable:SetDeploySpacing(GLOBAL.DEPLOYSPACING.MEDIUM)
+		end
+	end)
+	AddPrefabPostInit("rock_avocado_fruit_sprout", function(inst)
+		if inst.components.deployable then
+			inst.components.deployable:SetDeploySpacing(GLOBAL.DEPLOYSPACING.MEDIUM)
+		end
+	end)
+	AddPrefabPostInit("dug_rock_avocado_bush", function(inst)
+		if inst.components.deployable then
+			inst.components.deployable:SetDeploySpacing(GLOBAL.DEPLOYSPACING.MEDIUM)
+		end
+	end)
 end
