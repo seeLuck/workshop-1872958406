@@ -75,3 +75,19 @@ if GetModConfigData("bossFastRespawn") then
 	TUNING.ANTLION_RAGE_TIME_INITIAL = 999 * 480
 	TUNING.ANTLION_RAGE_TIME_MAX = 999 * 480
 end
+
+-- 锤子锤厨师锅
+AddPrefabPostInit("portablecookpot", function(inst)
+	if not _G.TheWorld.ismastersim then return inst end
+	if inst.components.portablestructure then
+		inst:RemoveComponent("portablestructure")
+	end
+end)
+
+-- 训牛不找人
+AddPrefabPostInit("beefalo",function(inst)
+    if not GLOBAL.TheWorld.ismastersim then
+        return inst
+    end
+    inst:SetBrain(GLOBAL.require("brains/newbeefalobrain"))
+end)
