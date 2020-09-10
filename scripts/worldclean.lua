@@ -171,23 +171,30 @@ if IsServer then
                     if thisPrefab == 'beefalo' and not (v.components.domesticatable ~= nil and v.components.domesticatable:IsDomesticated()) then
                         break
                     end
-                    if this_max_prefabs[thisPrefab] ~= nil then
-                        if v.reclean == nil then
-                            v.reclean = 1
-                        else
-                            v.reclean = v.reclean + 1
-                        end
 
-                        local bNotClean = true
+                    if this_max_prefabs[thisPrefab] == nil then break end
+
+                    if (this_max_prefabs[thisPrefab].stack ~= nil and v.components and v.components.stackable and v.components.stackable:StackSize() >= this_max_prefabs[thisPrefab].stack) or this_max_prefabs[thisPrefab].tool then
                         if this_max_prefabs[thisPrefab].reclean ~= nil then
-                            bNotClean = this_max_prefabs[thisPrefab].reclean >= v.reclean
+                            if v.reclean == nil then
+                                v.reclean = 1
+                            else
+                                v.reclean = v.reclean + 1
+                            end
+                            if this_max_prefabs[thisPrefab].reclean >= v.reclean then break end
                         end
+                    end
 
-                        if bNotClean then
-                            if this_max_prefabs[thisPrefab].stack ~= nil and v.components and v.components.stackable and v.components.stackable:StackSize() >= this_max_prefabs[thisPrefab].stack then break 
-                            elseif this_max_prefabs[thisPrefab].tool then break end
-                        end
-                    else break end
+                        -- local bNotClean = true
+                        -- if this_max_prefabs[thisPrefab].reclean ~= nil then
+                        --     bNotClean = this_max_prefabs[thisPrefab].reclean >= v.reclean
+                        -- end
+
+                        -- if bNotClean then
+                        --     if this_max_prefabs[thisPrefab].stack ~= nil and v.components and v.components.stackable and v.components.stackable:StackSize() >= this_max_prefabs[thisPrefab].stack then break 
+                        --     elseif this_max_prefabs[thisPrefab].tool then break end
+                        -- end
+
 
                     if countList[thisPrefab] == nil then
                         countList[thisPrefab] = { name = v.name, count = 1, currentcount = 1 }
