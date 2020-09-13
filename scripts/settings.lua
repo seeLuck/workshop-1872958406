@@ -1,6 +1,9 @@
 -- 草蜥蜴
 TUNING.GRASSGEKKO_MORPH_CHANCE = 0
 
+-- 饥饿腰带
+TUNING.HUNGERBELT_PERISHTIME = 480 * 80
+
 -- 舔盐器
 if GetModConfigData("salt") then
 	TUNING.SALTLICK_BEEFALO_USES = 0;
