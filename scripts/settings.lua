@@ -87,6 +87,14 @@ AddPrefabPostInit("portablecookpot", function(inst)
 	end
 end)
 
+-- 人人都是大厨
+if GetModConfigData("chef") then
+	AddPlayerPostInit(function(inst)
+		inst:AddTag("masterchef")
+		inst:AddTag("professionalchef")
+	end)
+end
+
 -- 训牛不找人
 AddPrefabPostInit("beefalo",function(inst)
     if not GLOBAL.TheWorld.ismastersim then
