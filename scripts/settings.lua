@@ -104,3 +104,9 @@ AddPrefabPostInit("beefalo",function(inst)
     end
     inst:SetBrain(GLOBAL.require("brains/newbeefalobrain"))
 end)
+
+-- 蚊子血袋必掉
+SetSharedLootTable('mosquito',
+{
+    {'mosquitosack', 1},
+})
