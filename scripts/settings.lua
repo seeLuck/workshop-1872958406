@@ -111,6 +111,7 @@ SetSharedLootTable('mosquito',
     {'mosquitosack', 1},
 })
 AddPrefabPostInit("mosquito",function(inst)
+	inst:RemoveComponent("lootdropper")
 	inst:AddComponent("lootdropper")
 	inst.components.lootdropper:SetChanceLootTable('mosquito')
 end)
