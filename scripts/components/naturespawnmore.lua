@@ -450,7 +450,7 @@ local NatureSpawn = Class(function(self, inst)
                 fireflies_spawner(inst)
                 reeds_spawner(inst)
                 cactus_spawner(inst)
-                sketch_spawner(inst)
+                -- sketch_spawner(inst)
             elseif TheWorld:HasTag("cave") then
                 slurtlehole_spawner(inst)
                 flower_cave_spawner(inst)
