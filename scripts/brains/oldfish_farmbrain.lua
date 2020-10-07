@@ -394,7 +394,8 @@ local function PickBerriesAction(inst)
             return BufferedAction(inst, target, ACTIONS.HARVEST)
         elseif target.components.stewer ~= nil and target.components.stewer:IsDone() then
             return BufferedAction(inst, target, ACTIONS.HARVEST)
-        elseif target.prefab == "rock_avocado_bush" and target.components.growable ~= nil and target.components.growable.stage == 3 then
+        elseif target.prefab == "rock_avocado_bush" and target.components.growable ~= nil 
+            and target.components.growable.stage == 3 and inst.components.container:GetItemInSlot(2).prefab == "pickaxe" then
                 return BufferedAction(inst, target, ACTIONS.PICK)
         elseif target.components.crop ~= nil then
             if target.components.crop:IsReadyForHarvest() or target:HasTag("withered") then
