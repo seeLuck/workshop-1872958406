@@ -106,11 +106,11 @@ AddPrefabPostInit("beefalo",function(inst)
 end)
 
 -- 蚊子血袋必掉
-SetSharedLootTable('mosquito_new',
-{
-    {'mosquitosack', 1},
-})
 AddPrefabPostInit("mosquito",function(inst)
+	SetSharedLootTable('mosquito_new',
+	{
+    	{'mosquitosack', 1}
+	})
 	inst:RemoveComponent("lootdropper")
 	inst:AddComponent("lootdropper")
 	inst.components.lootdropper:SetChanceLootTable('mosquito_new')

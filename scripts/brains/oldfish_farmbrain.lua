@@ -406,7 +406,8 @@ local function PickBerriesAction(inst)
         target.prefab == "grass" or target.prefab == "sapling" or target.prefab == "sapling_moon") and 
         inst.components.container:GetItemInSlot(1) ~= nil and inst.components.container:GetItemInSlot(1).prefab == "shovel" and not target:HasTag("fire") then
             return BufferedAction(inst, target, ACTIONS.PICK)
-        elseif target.components.pickable and not target:HasTag("fire") then
+        elseif target.prefab ~= "berrybush" or target.prefab ~= "berrybush2" or target.prefab ~= "berrybush_juicy" or 
+        target.prefab ~= "grass" or target.prefab ~= "sapling" or target.prefab ~= "sapling_moon" and target.components.pickable and not target:HasTag("fire") then
             return BufferedAction(inst, target, ACTIONS.PICK)
         end
     end
