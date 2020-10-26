@@ -313,11 +313,11 @@ local function makeNewPlantAction(inst)
 
     local seends = inst.components.container:FindItem(function(v)
         return (v.prefab == "pinecone" and 
-        inst.components.container:GetItemInSlot(1) ~= nil and 
-        inst.components.container:GetItemInSlot(1).prefab == "axe") or 
-        (v.prefab == "marblebean" and 
         inst.components.container:GetItemInSlot(2) ~= nil and 
-        inst.components.container:GetItemInSlot(2).prefab == "pickaxe")
+        inst.components.container:GetItemInSlot(2).prefab == "axe") or 
+        (v.prefab == "marblebean" and 
+        inst.components.container:GetItemInSlot(3) ~= nil and 
+        inst.components.container:GetItemInSlot(3).prefab == "pickaxe")
         -- return v.prefab == "dug_sapling"
         --         or v.prefab == "dug_sapling_moon"
         --         or v.prefab == "dug_berrybush"
@@ -387,19 +387,24 @@ local function PickBerriesAction(inst)
         --     return BufferedAction(inst, target, ACTIONS.HARVEST)
 
         if ((target:HasTag("beebox") and target.components.harvestable.produce >= 6 and 
-        inst.components.container:GetItemInSlot(5) ~= nil and inst.components.container:GetItemInSlot(5).prefab == "bugnet")
+        inst.components.container:GetItemInSlot(6) ~= nil and inst.components.container:GetItemInSlot(6).prefab == "bugnet")
             or (target:HasTag("mushroom_farm") and target.components.harvestable.produce >= 6)
             or target:HasTag("dried")) 
             and not target:HasTag("burnt") then   
             return BufferedAction(inst, target, ACTIONS.HARVEST)
         elseif target.components.stewer ~= nil and target.components.stewer:IsDone() then
             return BufferedAction(inst, target, ACTIONS.HARVEST)
-        elseif target.prefab == "rock_avocado_bush" and target.components.growable ~= nil and target.components.growable.stage == 3 then
+        elseif target.prefab == "rock_avocado_bush" and target.components.growable ~= nil and target.components.growable.stage == 3 and 
+        inst.components.container:GetItemInSlot(1) ~= nil and inst.components.container:GetItemInSlot(1).prefab == "shovel" then
                 return BufferedAction(inst, target, ACTIONS.PICK)
         elseif target.components.crop ~= nil then
             if target.components.crop:IsReadyForHarvest() or target:HasTag("withered") then
                 return BufferedAction(inst, target, ACTIONS.HARVEST)
             end
+        elseif (target.prefab == "berrybush" or target.prefab == "berrybush2" or target.prefab == "berrybush_juicy" or 
+        target.prefab == "grass" or target.prefab == "sapling" or target.prefab == "sapling_moon") and 
+        inst.components.container:GetItemInSlot(1) ~= nil and inst.components.container:GetItemInSlot(1).prefab == "shovel" and not target:HasTag("fire") then
+            return BufferedAction(inst, target, ACTIONS.PICK)
         elseif target.components.pickable and not target:HasTag("fire") then
             return BufferedAction(inst, target, ACTIONS.PICK)
         end

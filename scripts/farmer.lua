@@ -14,8 +14,8 @@ local function FindTarget(inst, radius)
             return inst.components.combat:CanTarget(guy) and 
             (not guy:HasTag("oldfish_farmer") and (not guy:HasTag("monster") or guy:HasTag("player")) 
             or (guy:HasTag("oldfish_farmer") and 
-                guy.components.container:GetItemInSlot(4) ~= nil and 
-                guy.components.container:GetItemInSlot(4).prefab == "spear")
+                guy.components.container:GetItemInSlot(5) ~= nil and 
+                guy.components.container:GetItemInSlot(5).prefab == "spear")
             )
         end,
         { "_combat", "character" },
@@ -47,8 +47,8 @@ local function QueenTarget(inst)
                 return inst.components.combat:CanTarget(guy) and 
                 (not guy:HasTag("oldfish_farmer") and (not guy:HasTag("monster") or guy:HasTag("player")) 
                 or (guy:HasTag("oldfish_farmer") and 
-                    guy.components.container:GetItemInSlot(4) ~= nil and 
-                    guy.components.container:GetItemInSlot(4).prefab == "spear")
+                    guy.components.container:GetItemInSlot(5) ~= nil and 
+                    guy.components.container:GetItemInSlot(5).prefab == "spear")
                 )
             end,
             { "character", "_combat" },
@@ -80,8 +80,8 @@ local function BunnymanTarget(inst)
                     return inst.components.combat:CanTarget(guy) and 
                     (guy:HasTag("monster") 
                     or (guy:HasTag("oldfish_farmer") and 
-                        guy.components.container:GetItemInSlot(3) ~= nil and 
-                        guy.components.container:GetItemInSlot(3).prefab == "hammer")
+                        guy.components.container:GetItemInSlot(4) ~= nil and 
+                        guy.components.container:GetItemInSlot(4).prefab == "hammer")
                     or (not guy:HasTag("oldfish_farmer") and
                         guy.components.inventory ~= nil and
                         guy:IsNear(inst, TUNING.BUNNYMAN_SEE_MEAT_DIST) and
@@ -122,8 +122,8 @@ local function PigmanTarget(inst)
                 TUNING.PIG_TARGET_DIST,
                 function(guy)
                     return (guy:HasTag("oldfish_farmer") and 
-                    guy.components.container:GetItemInSlot(3) ~= nil and 
-                    guy.components.container:GetItemInSlot(3).prefab == "hammer")
+                    guy.components.container:GetItemInSlot(4) ~= nil and 
+                    guy.components.container:GetItemInSlot(4).prefab == "hammer")
                         or (not guy:HasTag("oldfish_farmer") and 
                         (guy.LightWatcher == nil or guy.LightWatcher:IsInLight()) and 
                         inst.components.combat:CanTarget(guy))
