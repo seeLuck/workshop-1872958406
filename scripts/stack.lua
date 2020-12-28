@@ -10,6 +10,7 @@ local function Put(inst, item)
 end
 --[[ 标准掉落 ]]
 AddPrefabPostInitAny(function(inst)
+	if inst.xt_stack_no then return end
 	if inst.components.stackable == nil then return end
 	inst:ListenForEvent("xt_stack_on_loot_dropped", function()
 		inst:DoTaskInTime(.5, function()
@@ -27,8 +28,8 @@ end)
 local function PrePut(inst, x, y, z, time, ents, prefabs)
 	inst:DoTaskInTime(time + FRAMES, function()
 		for _, item in ipairs(FindEntities(x, y, z)) do
-			if item and item:IsValid() and (prefabs == nil or table.contains(prefabs, item.prefab)) and
-			not table.contains(ents, item) then item:PushEvent("xt_stack_on_loot_dropped") end
+			if item and item:IsValid() and (prefabs == nil or table.contains(prefabs, item.prefab))
+			and not table.contains(ents, item) then item:PushEvent("xt_stack_on_loot_dropped") end
 		end
 	end)
 end
@@ -144,8 +145,8 @@ AddPrefabPostInit("bearger", function(inst)
 end)
 --[[ 邪天翁羽毛 ]]
 AddPrefabPostInit("malbatross_feather_fall", function(inst)
-	if inst.event_listeners == nil or inst.event_listeners.animover == nil or inst.event_listeners.animover[inst] ==
-	nil or inst.event_listeners.animover[inst][1] == nil then return end
+	if inst.event_listeners == nil or inst.event_listeners.animover == nil or inst.event_listeners.animover[inst]
+	== nil or inst.event_listeners.animover[inst][1] == nil then return end
 	local fn = inst.event_listeners.animover[inst][1]
 	inst.event_listeners.animover[inst][1] = function(...)
 		local x, y, z = inst.Transform:GetWorldPosition()
