@@ -1,6 +1,7 @@
 local STACK_RADIUS = 10
 local function FindEntities(x, y, z)
-	return TheSim:FindEntities(x, y, z, STACK_RADIUS, {"_stackable"}, {"INLIMBO", "NOCLICK"})
+	return TheSim:FindEntities(x, y, z, STACK_RADIUS, {"_stackable"},
+	{"INLIMBO", "NOCLICK", "lootpump_oncatch", "lootpump_onflight"})
 end
 local function Put(inst, item)
 	if item ~= inst and item.prefab == inst.prefab and item.skinname == inst.skinname then
@@ -10,7 +11,7 @@ local function Put(inst, item)
 end
 --[[ 标准掉落 ]]
 AddPrefabPostInitAny(function(inst)
-	if inst.xt_stack_no then return end
+	if inst:HasTag("smallcreature") or inst:HasTag("heavy") then return end
 	if inst.components.stackable == nil then return end
 	inst:ListenForEvent("xt_stack_on_loot_dropped", function()
 		inst:DoTaskInTime(.5, function()
