@@ -98,12 +98,12 @@ if GetModConfigData("chef") then
 end
 
 -- 训牛不找人
--- AddPrefabPostInit("beefalo",function(inst)
---     if not GLOBAL.TheWorld.ismastersim then
---         return inst
---     end
---     inst:SetBrain(GLOBAL.require("brains/newbeefalobrain"))
--- end)
+AddPrefabPostInit("beefalo",function(inst)
+    if not GLOBAL.TheWorld.ismastersim then
+        return inst
+    end
+    inst:SetBrain(GLOBAL.require("brains/newbeefalobrain"))
+end)
 
 -- 蚊子血袋必掉
 GLOBAL.SetSharedLootTable('mosquito_new',
