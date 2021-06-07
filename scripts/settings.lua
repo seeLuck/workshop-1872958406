@@ -37,6 +37,9 @@ end
 -- 蘑菇帽孢子速度
 TUNING.MUSHROOMHAT_SPORE_TIME = 15
 
+-- 神秘装置血量
+TUNING.MOONSTORM_SPARK_HEALTH = 500
+
 -- 世界再生
 if GetModConfigData("natureSpawn") == 1 then
 	AddPrefabPostInit("forest", function(inst)
