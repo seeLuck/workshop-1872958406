@@ -1,3 +1,4 @@
+local IsServer = TheNet:GetIsServer() or TheNet:IsDedicated()
 local prefabs = {
 }
 
@@ -426,7 +427,7 @@ local NatureSpawn = Class(function(self, inst)
 
     inst:ListenForEvent("cycleschanged", function()
         local count_50days = TheWorld.state.cycles/50
-        if math.floor(count_50days) == count_50days and count_50days ~= 0 then --try spawn prefabs every 50 days
+        if math.floor(count_50days) == count_50days and count_50days ~= 0 and IsServer then --try spawn prefabs every 50 days
             if TheWorld:HasTag("forest") then
                 wasphive_spawner(inst)
                 beehive_spawner(inst)
