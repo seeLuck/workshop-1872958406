@@ -14,9 +14,9 @@ prefabs.tentacle = 100
 prefabs.beefalo = 15
 prefabs.lightninggoat = 10
 prefabs.pigtorch = 30
-prefabs.knight = 2
-prefabs.bishop = 2
-prefabs.rook = 1
+-- prefabs.knight = 2
+-- prefabs.bishop = 2
+-- prefabs.rook = 1
 prefabs.mandrake_planted = 2
 prefabs.livingtree = 2
 prefabs.blue_mushroom = 30
@@ -38,16 +38,13 @@ tilefns.pighouse = function(tile) return (tile == GROUND.DECIDUOUS) end
 tilefns.mermhouse = function(tile) return (tile == GROUND.FOREST or tile == GROUND.MARSH) end
 tilefns.catcoonden = function(tile) return (tile == GROUND.DECIDUOUS) end
 tilefns.spiderden = function(tile) return (tile == GROUND.FOREST or tile == GROUND.SINKHOLE) end
-tilefns.tallbirdnest = function(tile) return (tile == GROUND.ROCKY or tile == GROUND.DESERT_DIRT) end
+tilefns.tallbirdnest = function(tile) return (tile == GROUND.DESERT_DIRT) end
 tilefns.tentacle = function(tile) return (tile == GROUND.MARSH) end
 tilefns.reeds = function(tile) return (tile == GROUND.MARSH) end
 tilefns.beefalo = function(tile) return (tile == GROUND.SAVANNA) end
 tilefns.lightninggoat = function(tile) return (tile == GROUND.DESERT_DIRT) end
 tilefns.cactus = function(tile) return (tile == GROUND.DESERT_DIRT) end
 tilefns.pigtorch = function(tile) return (tile == GROUND.FOREST or tile == GROUND.SAVANNA) end
-tilefns.knight = function(tile) return (tile == GROUND.ROCKY) end
-tilefns.bishop = function(tile) return (tile == GROUND.ROCKY) end
-tilefns.rook = function(tile) return (tile == GROUND.ROCKY) end
 tilefns.mandrake_planted = function(tile) return (tile == GROUND.FOREST) end
 tilefns.livingtree = function(tile) return (tile == GROUND.FOREST) end
 tilefns.blue_mushroom = function(tile) return (tile == GROUND.FOREST or tile == GROUND.DECIDUOUS or tile == GROUND.GRASS) end
@@ -58,6 +55,9 @@ tilefns.slurtlehole = function(tile) return (tile == GROUND.MUD) end
 tilefns.flower_cave = function(tile) return (tile == GROUND.MUD or tile == GROUND.SINKHOLE) end
 tilefns.spiderhole = function(tile) return (tile == GROUND.UNDERROCK) end
 tilefns.rabbithouse = function(tile) return (tile == GROUND.SINKHOLE) end
+tilefns.knight = function(tile) return (tile == GROUND.ROCKY) end
+tilefns.bishop = function(tile) return (tile == GROUND.ROCKY) end
+tilefns.rook = function(tile) return (tile == GROUND.ROCKY) end
 tilefns.chesspiece_bishop_sketch = function(tile) return (tile == GROUND.DECIDUOUS) end
 tilefns.chesspiece_rook_sketch = function(tile) return (tile == GROUND.DECIDUOUS) end
 tilefns.chesspiece_knight_sketch = function(tile) return (tile == GROUND.DECIDUOUS) end
