@@ -14,9 +14,9 @@ prefabs.tentacle = 10
 prefabs.beefalo = 4
 prefabs.lightninggoat = 3
 prefabs.pigtorch = 2
--- prefabs.knight = 1
--- prefabs.bishop = 1
--- prefabs.rook = 1
+prefabs.knight = 1
+prefabs.bishop = 1
+prefabs.rook = 1
 prefabs.mandrake_planted = 1
 prefabs.livingtree = 1
 prefabs.blue_mushroom = 5
@@ -440,9 +440,9 @@ local NatureSpawn = Class(function(self, inst)
                 beefalo_spawner(inst)
                 lightninggoat_spawner(inst)
                 pigtorch_spawner(inst)
-                knight_spawner(inst)
-                bishop_spawner(inst)
-                rook_spawner(inst)
+                -- knight_spawner(inst)
+                -- bishop_spawner(inst)
+                -- rook_spawner(inst)
                 mandrake_planted_spawner(inst)
                 livingtree_spawner(inst)
                 blue_mushroom_spawner(inst)
