@@ -100,6 +100,9 @@ if GetModConfigData("chef") then
 	end)
 end
 
+-- 鱼人王10倍饥饿
+TUNING.MERM_KING_HUNGER_RATE = 200 / (480 * 4 * 10)
+
 -- 训牛不找人
 -- AddPrefabPostInit("beefalo",function(inst)
 --     if not GLOBAL.TheWorld.ismastersim then
