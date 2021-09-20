@@ -5,7 +5,7 @@ _G.TUNING.EMERGENCY_BURNING_NUMBER = 1 -- number of fires to maintain warning le
 _G.TUNING.EMERGENCY_WARNING_TIME = 1   -- minimum length of warning period
 _G.TUNING.EMERGENCY_RESPONSE_TIME = 1 -- BURNT_NUMBER structures must burn within this time period to trigger flingomatic emergency response
 _G.TUNING.EMERGENCY_SHUT_OFF_TIME = 5 -- stay on for this length of time
-_G.TUNING.FIRESUPPRESSOR_MAX_FUEL_TIME = 480 * 20
+_G.TUNING.FIRESUPPRESSOR_MAX_FUEL_TIME = 480 * 5
 
 local whitelist_for_ice_flingomatic = {
 	"campfire",
