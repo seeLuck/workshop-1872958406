@@ -121,3 +121,11 @@ AddPrefabPostInit("mosquito",function(inst)
 	inst:AddComponent("lootdropper")
 	inst.components.lootdropper:SetChanceLootTable('mosquito_new')
 end)
+
+-- 沃尔特调整
+TUNING.WOBY_BIG_HUNGER = 37
+TUNING.WOBY_BIG_HUNGER_RATE = 37 / (480 * 2)
+TUNING.WOBY_SMALL_HUNGER = 37
+TUNING.WOBY_SMALL_HUNGER_RATE = 37 / (480 * 2)
+TUNING.WOBY_BIG_SPEED.MEDIUM = 10
+TUNING.WOBY_BIG_SPEED.SLOW = 10
