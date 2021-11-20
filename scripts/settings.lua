@@ -100,9 +100,12 @@ if GetModConfigData("chef") then
 	end)
 end
 
--- 鱼人王无限饥饿
-TUNING.MERM_KING_HUNGER_RATE = 0
-
+-- 鱼人加强
+if GetModConfigData("merm") then
+	TUNING.MERM_KING_HUNGER_RATE = 0
+	TUNING.MERM_GUARD_LOYALTY_MAXTIME = 999999 * 480,
+	TUNING.MERM_GUARD_LOYALTY_PER_HUNGER = 999999 * 480,
+end
 -- 训牛不找人
 -- AddPrefabPostInit("beefalo",function(inst)
 --     if not GLOBAL.TheWorld.ismastersim then

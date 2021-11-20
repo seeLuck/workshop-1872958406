@@ -156,5 +156,15 @@ configuration_options =
             {description = "ON", data = true, hover = "ON"},
         },
         default = false,
+    },
+    {
+        name = "merm",
+        label = "Merm",
+        options =
+        {
+            {description = "OFF", data = false, hover = "OFF"},
+            {description = "ON", data = true, hover = "ON"},
+        },
+        default = false,
     }
 }
