@@ -105,6 +105,13 @@ if GetModConfigData("merm") then
 	TUNING.MERM_KING_HUNGER_RATE = 0
 	TUNING.MERM_GUARD_LOYALTY_MAXTIME = 999999 * 480
 	TUNING.MERM_GUARD_LOYALTY_PER_HUNGER = 999999 * 480
+	local function AcceptTest(inst, item, giver)	
+		local is_event_item = IsSpecialEventActive(SPECIAL_EVENTS.HALLOWED_NIGHTS) and item.components.tradable.halloweencandyvalue and item.components.tradable.halloweencandyvalue > 0
+		return item.components.tradable.goldvalue > 0 or is_event_item or item.prefab == "pig_token"
+	end
+	AddPrefabPostInit("pigking", function(inst)
+		inst.components.trader:SetAcceptTest(AcceptTest)
+	end)
 end
 -- 训牛不找人
 -- AddPrefabPostInit("beefalo",function(inst)
