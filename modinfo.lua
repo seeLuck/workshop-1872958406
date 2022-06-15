@@ -46,16 +46,6 @@ configuration_options =
         default = false,
     },
     {
-        name = "wx78drop",
-        label = "WX78Drop",
-        options =
-        {
-            {description = "OFF", data = false, hover = "OFF"},
-            {description = "ON", data = true, hover = "ON"},
-        },
-        default = false,
-    },
-    {
         name = "smartIceMachine",
         label = "SmartIceMachine",
         options =

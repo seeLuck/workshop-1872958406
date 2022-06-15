@@ -6,10 +6,6 @@ if GetModConfigData("beenice") then
 	modimport("scripts/beenice.lua")
 end
 
-if GetModConfigData("wx78drop") then
-	modimport("scripts/wx78drop.lua")
-end
-
 if GetModConfigData("lanternColor") then
 	modimport("scripts/lanterncolor.lua")
 end
