@@ -138,6 +138,16 @@ configuration_options =
         default = false,
     },
     {
+        name = "dontdrop",
+        label = "Dontdrop",
+        options =
+        {
+            {description = "OFF", data = false, hover = "OFF"},
+            {description = "ON", data = true, hover = "ON"},
+        },
+        default = false,
+    },
+    {
         name = "chef",
         label = "Chef",
         options =

@@ -26,6 +26,10 @@ if GetModConfigData("farmer") then
 	modimport("scripts/farmer.lua")
 end
 
+if GetModConfigData("dontdrop") then
+	modimport("scripts/dontdrop.lua")
+end
+
 modimport("scripts/settings.lua")
 modimport("scripts/stack.lua")
 modimport("scripts/autocatch.lua")
@@ -34,6 +38,5 @@ modimport("scripts/toolsfule.lua")
 modimport("scripts/boatpatch.lua")
 modimport("scripts/equipmentswitcher.lua")
 modimport("scripts/wallmath.lua")
-modimport("scripts/dontdrop.lua")
 modimport("scripts/eyeturret.lua")
 modimport("scripts/sisturn.lua")
