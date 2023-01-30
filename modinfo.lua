@@ -66,6 +66,16 @@ configuration_options =
         default = false,
     },
     {
+        name = "moonStormHealth",
+        label = "MoonStormHealth",
+        options =
+        {
+            {description = "OFF", data = false, hover = "OFF"},
+            {description = "ON", data = true, hover = "ON"},
+        },
+        default = false,
+    },
+    {
         name = "natureSpawn",
         label = "NatureSpawn",
         options =

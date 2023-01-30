@@ -38,7 +38,9 @@ end
 TUNING.MUSHROOMHAT_SPORE_TIME = 15
 
 -- 神秘装置血量
-TUNING.MOONSTORM_SPARK_HEALTH = 500
+if GetModConfigData("moonStormHealth") then
+	TUNING.MOONSTORM_SPARK_HEALTH = 500
+end
 
 -- 世界再生
 if GetModConfigData("natureSpawn") == 1 then
